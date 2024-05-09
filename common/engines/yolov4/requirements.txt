@@ -1,0 +1,10 @@
+numpy
+torch
+tensorboardX
+scikit-image
+matplotlib
+tqdm
+easydict
+Pillow
+opencv-python
+pycocotools

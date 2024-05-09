@@ -1,0 +1,142 @@
+html {
+    width: 100%; height: 100%;
+    margin: 0px; padding: 0px;
+    display: flex;
+    box-sizing: border-box;
+    user-select: none;
+
+    background-image: url('Wavy_grass.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: rgba(235, 235, 235, 1.0);
+    font-family: "Microsoft YaHei";
+}
+body {
+    width: 100%; height: 100%;
+    margin: 0px; padding: 0px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+/* 模板栏 */
+#templates_div {
+    width: 100%; height: 40px;
+    margin: 0px; padding: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+/* 主面板 */
+#main_div {
+    width: 100%; height: 100%;
+    margin: 0px; padding: 20px;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+/* 模型 */
+#weights_div {
+    width: 600px; height: 100%;
+    margin: 0px; padding: 0px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+/* 模型加载 */
+#load_div {
+    width: 100%; height: 100%;
+    margin: 0px; padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+/* 模型推理 */
+#infer_div {
+    width: 100%; height: 100%;
+    margin: 0px; padding: 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+/* 图像 */
+#frame_div {
+    position: relative;
+    width: 100%; height: 100%;
+    margin: 0px; padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+/* 模板 */
+.template {
+    width: 100%; height: 100%;
+    margin: 0px; padding: 0px;
+    display: none;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.template div {
+    display: flex;
+    flex-direction: row;
+}
+.yolov8u { /* 默认选项 */
+    display: flex;
+}
+/* 推理结果 */
+#frame_canvas_div {
+    width: 100%; height: 100%;
+    margin: 0px; padding: 0px;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+/* 全局参数 */
+span {
+    margin-left: 10px;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgba(235, 235, 235, 0.9);
+    font-family: "Microsoft YaHei";
+}
+button, select, input {
+    margin: 2px; padding: 0px;
+    margin-left: 10px;
+    padding-left: 5px; padding-right: 7px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+button:hover, select:hover, input:hover {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+option {
+    color: rgba(0, 0, 0, 0.8);
+}
+input[type="text"] {
+    width: 100%;
+}
+input[type="number"] {
+    width: 50px;
+}
+#print_span {font-size: 16px; margin-top: 4px;}
+#weight_name_select, #load_button, #infer_button {height: 35px; margin-left: 2px;}
+#template_select {margin: 0px; padding: 0px;}
+.weight_name_status, .config_name_status, .frame_name_status {
+    font-size: 16px; margin-top: 4px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

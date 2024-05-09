@@ -1,0 +1,17 @@
+filterpy
+ftfy
+gdown
+GitPython
+lapx
+loguru
+numpy
+opencv-python
+pandas
+pre-commit
+PyYAML
+regex
+scikit-learn
+tensorboard
+torch
+torchvision
+yacs

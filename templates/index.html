@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>api</title>
+        <link rel="icon" href="{{ url_for('static', path='css/Planet.png') }}">
+        <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    </head>
+    <body>
+        <div id="templates_div">
+            <select id="template_select">
+                <option value="grounding_dino">grounding_dino</option>
+                <option value="yolo_worldu">yolo_worldu</option>
+                <option value="yolov4">yolov4</option>
+                <option value="yolov5">yolov5</option>
+                <option value="yolov5u">yolov5u</option>
+                <option value="yolov8u" selected>yolov8u</option>
+            </select>
+            <span id="print_span"></span>
+        </div>
+        <div id="main_div">
+            <div id="weights_div">
+                <input type="file" id="weight_input" style="display: none;">
+                <input type="file" id="config_input" style="display: none;">
+                <input type="file" id="frame_input" style="display: none;">
+                <div id="load_div">
+                    <h1>模型加载</h1>
+                    <div class="template grounding_dino">
+                        <div><span>weight:</span><button class="weight_upload">上传模型</button><span class="weight_name_status">未上传</span></div>
+                        <div><span>config:</span><button class="config_upload">上传参数</button><span class="config_name_status">未上传</span></div>
+                        <div><span>device:</span><select class="device_select"><option value="gpu">gpu</option><option value="cpu">cpu</option></select></div>
+                    </div>
+                    <div class="template yolo_worldu">
+                        <div><span>weight:</span><button class="weight_upload">上传模型</button><span class="weight_name_status">未上传</span></div>
+                        <div><span>device:</span><select class="device_select"><option value="gpu">gpu</option><option value="cpu">cpu</option></select></div>
+                        <div><span>half:</span><select class="half_select"><option value="false">false</option><option value="true">true</option></select></div>
+                    </div>
+                    <div class="template yolov4">
+                        <div><span>weight:</span><button class="weight_upload">上传模型</button><span class="weight_name_status">未上传</span></div>
+                        <div><span>config:</span><button class="config_upload">上传参数</button><span class="config_name_status">未上传</span></div>
+                        <div><span>device:</span><select class="device_select"><option value="gpu">gpu</option><option value="cpu">cpu</option></select></div>
+                    </div>
+                    <div class="template yolov5">
+                        <div><span>weight:</span><button class="weight_upload">上传模型</button><span class="weight_name_status">未上传</span></div>
+                        <div><span>device:</span><select class="device_select"><option value="gpu">gpu</option><option value="cpu">cpu</option></select></div>
+                        <div><span>half:</span><select class="half_select"><option value="false">false</option><option value="true">true</option></select></div>
+                    </div>
+                    <div class="template yolov5u">
+                        <div><span>weight:</span><button class="weight_upload">上传模型</button><span class="weight_name_status">未上传</span></div>
+                        <div><span>device:</span><select class="device_select"><option value="gpu">gpu</option><option value="cpu">cpu</option></select></div>
+                        <div><span>half:</span><select class="half_select"><option value="false">false</option><option value="true">true</option></select></div>
+                    </div>
+                    <div class="template yolov8u">
+                        <div><span>weight:</span><button class="weight_upload">上传模型</button><span class="weight_name_status">未上传</span></div>
+                        <div><span>device:</span><select class="device_select"><option value="gpu">gpu</option><option value="cpu">cpu</option></select></div>
+                        <div><span>half:</span><select class="half_select"><option value="false">false</option><option value="true">true</option></select></div>
+                    </div>
+                    <button id="load_button">加载</button>
+                </div>
+                <div id="infer_div">
+                    <h1>模型推理</h1>
+                    <select id="weight_name_select"></select>
+                    <div class="template grounding_dino">
+                        <div><span>frame:</span><button class="frame_upload">上传图像</button><span class="frame_name_status">未上传</span></div>
+                        <div><span>conf:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.1" class="conf_input"></div>
+                        <div><span>iou:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.7" class="iou_input"></div>
+                        <div><span>classes:</span><input type="text" class="classes_input" value=false></div>
+                    </div>
+                    <div class="template yolo_worldu">
+                        <div><span>frame:</span><button class="frame_upload">上传图像</button><span class="frame_name_status">未上传</span></div>
+                        <div><span>conf:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.1" class="conf_input"></div>
+                        <div><span>iou:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.7" class="iou_input"></div>
+                        <div><span>classes:</span><input type="text" class="classes_input" value=false></div>
+                    </div>
+                    <div class="template yolov4">
+                        <div><span>frame:</span><button class="frame_upload">上传图像</button><span class="frame_name_status">未上传</span></div>
+                        <div><span>conf:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.25" class="conf_input"></div>
+                        <div><span>iou:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.7" class="iou_input"></div>
+                        <div><span>classes:</span><input type="text" class="classes_input" value=false></div>
+                    </div>
+                    <div class="template yolov5">
+                        <div><span>frame:</span><button class="frame_upload">上传图像</button><span class="frame_name_status">未上传</span></div>
+                        <div><span>conf:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.25" class="conf_input"></div>
+                        <div><span>iou:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.7" class="iou_input"></div>
+                        <div><span>classes:</span><input type="text" class="classes_input" value=false></div>
+                    </div>
+                    <div class="template yolov5u">
+                        <div><span>frame:</span><button class="frame_upload">上传图像</button><span class="frame_name_status">未上传</span></div>
+                        <div><span>conf:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.25" class="conf_input"></div>
+                        <div><span>iou:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.7" class="iou_input"></div>
+                        <div><span>classes:</span><input type="text" class="classes_input" value=false></div>
+                    </div>
+                    <div class="template yolov8u">
+                        <div><span>frame:</span><button class="frame_upload">上传图像</button><span class="frame_name_status">未上传</span></div>
+                        <div><span>conf:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.25" class="conf_input"></div>
+                        <div><span>iou:</span><input type="number" min="0.05" max="0.95" step="0.05" value="0.7" class="iou_input"></div>
+                        <div><span>classes:</span><input type="text" class="classes_input" value=false></div>
+                    </div>
+                    <button id="infer_button">推理</button>
+                </div>
+            </div>
+            <div id="frame_div">
+                <h1>推理结果</h1>
+                <div id="frame_canvas_div"><canvas id="frame_canvas"></canvas></div>
+            </div>
+        </div>
+        <script src="{{ url_for('static', path='js/script.js') }}"></script>
+    </body>
+</html>
